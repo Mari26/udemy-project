@@ -1,5 +1,5 @@
-let currentResult = 0;
+let currentResult = 10;
 
 currentResult = currentResult + 10;
 
-outputResult (currentResult, '');
+outputResult (currentResult,'bbb');
