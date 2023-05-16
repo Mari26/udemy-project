@@ -12,22 +12,26 @@ function createAndWriteOutput(operator, resultBeforeCalc, CulcNumber){
     const calcDescreption =`${resultBeforeCalc} ${operator} ${CulcNumber}`;
     outputResult (currentResult,calcDescreption); 
 }
+function writeTolog (operationIdentifier,prevResult,operationNumber,rnewResult){
+    const logEntry= {
+        operation : operationIdentifier,
+        prevResult: prevResult,
+        number : operationNumber,
+        result: rnewResult,
+
+}
+logEntries.push(logEntry);
+    console.log(logEntries);
+     
+}
 
 function add(){
     const enteredNumber = getUserNumberInput();
     const initialResult = currentResult;
     currentResult += enteredNumber;
     createAndWriteOutput ('+',initialResult,enteredNumber); 
+    writeTolog('ADD',initialResult,enteredNumber,currentResult);
     
-    const logEntry= {
-        operation : 'ADD',
-        prevResult: initialResult,
-        number : enteredNumber,
-        result: currentResult,
-
-}
-logEntries.push(logEntry);
-    console.log(logEntries);
 }
 
 /*
@@ -40,6 +44,7 @@ function subtract (){
     const initialResult = currentResult;
     currentResult -= enteredNumber;
     createAndWriteOutput ('-',initialResult,enteredNumber);  
+    writeTolog('SUBTRACT',initialResult,enteredNumber,currentResult);
 }
 
 function multiply (){
@@ -47,6 +52,7 @@ function multiply (){
     const initialResult = currentResult;
     currentResult *= enteredNumber;
     createAndWriteOutput ('*',initialResult,enteredNumber);  
+    writeTolog('MULTIPLY',initialResult,enteredNumber,currentResult);
 }
 
 
@@ -55,6 +61,7 @@ function divide (){
     const initialResult = currentResult;
     currentResult /= enteredNumber;
     createAndWriteOutput ('/',initialResult,enteredNumber); 
+    writeTolog('DIVIDE',initialResult,enteredNumber,currentResult);
 }
 
 
