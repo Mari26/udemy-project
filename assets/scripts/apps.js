@@ -25,12 +25,36 @@ logEntries.push(logEntry);
      
 }
 
-function add(){
+function calculateResult(calculationType){
     const enteredNumber = getUserNumberInput();
     const initialResult = currentResult;
-    currentResult += enteredNumber;
-    createAndWriteOutput ('+',initialResult,enteredNumber); 
-    writeTolog('ADD',initialResult,enteredNumber,currentResult);
+    let mathOperator;
+    if (calculationType==='ADD'){
+        currentResult += enteredNumber;
+        mathOperator = '+';
+    }else if (calculationType==='SUBTRACT'){
+        currentResult -= enteredNumber;
+        mathOperator = '-';
+    }else if (calculationType==='MULTIPLY'){
+        currentResult *= enteredNumber;
+        mathOperator= '*';
+    }else if (calculationType==='DIVIDE'){
+        currentResult /= enteredNumber;
+        mathOperator= '/';
+    }
+    
+if (calculationType != 'ADD' && calculationType != 'SUBTRACT' && calculationType != 'MULTIPLY'&&  calculationType != 'DIVIDE'){
+    return;
+}
+    createAndWriteOutput (mathOperator,initialResult,enteredNumber); 
+    writeTolog(calculationType,initialResult,enteredNumber,currentResult);
+
+}
+
+
+function add(){
+
+    calculateResult('ADD');
     
 }
 
@@ -40,28 +64,18 @@ let description = `${currentResult} + "სრული სიგიჟე"`
 outputResult (currentResult,'bbgb');*/
 
 function subtract (){
-    const enteredNumber = getUserNumberInput();
-    const initialResult = currentResult;
-    currentResult -= enteredNumber;
-    createAndWriteOutput ('-',initialResult,enteredNumber);  
-    writeTolog('SUBTRACT',initialResult,enteredNumber,currentResult);
+    calculateResult('SUBTRACT');
 }
 
 function multiply (){
-    const enteredNumber = getUserNumberInput();
-    const initialResult = currentResult;
-    currentResult *= enteredNumber;
-    createAndWriteOutput ('*',initialResult,enteredNumber);  
-    writeTolog('MULTIPLY',initialResult,enteredNumber,currentResult);
+    calculateResult('MULTIPLY'); 
+  
 }
 
 
 function divide (){
-    const enteredNumber = getUserNumberInput();
-    const initialResult = currentResult;
-    currentResult /= enteredNumber;
-    createAndWriteOutput ('/',initialResult,enteredNumber); 
-    writeTolog('DIVIDE',initialResult,enteredNumber,currentResult);
+    calculateResult('DIVIDE'); 
+    
 }
 
 
